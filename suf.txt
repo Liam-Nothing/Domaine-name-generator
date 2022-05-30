@@ -1,2 +1,6 @@
-.com
-.net
+.fr
+.me
+.pm
+.re
+.ovh
+.xyz
