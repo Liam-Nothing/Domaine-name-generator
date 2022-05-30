@@ -1,7 +1,3 @@
-climate
-park
-online
-edu
-education
-card
-phone
+google
+amazon
+tiktok
