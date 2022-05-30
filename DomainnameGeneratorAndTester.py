@@ -65,7 +65,7 @@ requests = (grequests.get(u) for u in urls)
 responses = grequests.map(requests)
 
 json = [response.json() for response in responses]
-file_out = open("output_{}.txt".format(dt_string), 'w')
+file_out = open("output_{}.log".format(dt_string), 'w')
 
 for idx,item in enumerate(json):
 	domaine = urls[idx].split('=')[-1]
@@ -77,8 +77,8 @@ for idx,item in enumerate(json):
 			else:
 				print(colored("[AVAILABLE] ", "yellow") + domaine)
 		else:
-			print(colored("[NO] ", "blue") + domaine)
+			print(colored("[NO]        ", "blue") + domaine)
 	else:
-		print(colored("[NO] ", "red") + domaine)
+		print(colored("[NO]        ", "red") + domaine)
 
 file_out.close()
