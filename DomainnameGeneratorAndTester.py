@@ -1,14 +1,14 @@
 import grequests
-import pprint
 from datetime import datetime
 from termcolor import colored
-import os
 from time import sleep
-from selenium import webdriver
-from selenium.webdriver import DesiredCapabilities
 import json
 import base64
+from selenium import webdriver
+from selenium.webdriver import DesiredCapabilities
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 # Some variables
 now = datetime.now()
@@ -31,7 +31,7 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")
 # capabilities["loggingPrefs"] = {"performance": "ALL"}  # Pour chromedriver < ~75
 capabilities["goog:loggingPrefs"] = {"performance": "ALL"}  # Pour chromedriver 75+
-driver = webdriver.Chrome(desired_capabilities=capabilities, executable_path="chromedriver.exe",options=chrome_options)
+driver = webdriver.Chrome(desired_capabilities=capabilities, service=Service(ChromeDriverManager().install()),options=chrome_options)
 driver.get("https://www.ovh.com/fr/order/webcloud/?form_id=domain_search_form#/webCloud/domain/select?selection=~()")
 sleep(1)
 logs_raw = driver.get_log("performance")
