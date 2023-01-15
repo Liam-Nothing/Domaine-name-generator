@@ -31,7 +31,8 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")
 # capabilities["loggingPrefs"] = {"performance": "ALL"}  # Pour chromedriver < ~75
 capabilities["goog:loggingPrefs"] = {"performance": "ALL"}  # Pour chromedriver 75+
-driver = webdriver.Chrome(desired_capabilities=capabilities, service=Service(ChromeDriverManager().install()),options=chrome_options)
+# driver = webdriver.Chrome(desired_capabilities=capabilities, service=Service(ChromeDriverManager().install()),options=chrome_options)
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 driver.get("https://www.ovh.com/fr/order/webcloud/?form_id=domain_search_form#/webCloud/domain/select?selection=~()")
 sleep(1)
 logs_raw = driver.get_log("performance")
@@ -67,10 +68,10 @@ for idx,item in enumerate(json):
 		if not len(item) == 0:
 			if 'action' in item[0]:
 				if (item[0]["action"] == "create") and (item[0]["pricingMode"] == "default"):
-					print(colored("[AVAILABLE] ", "green") + domaine)
+					print(colored("[AVAILABLE] ", "green") + domaine + colored(" " + item[0]["prices"][1]["price"]["text"], "magenta"))
 					file_out.writelines(domaine + "\n")
 				else:
-					print(colored("[TRADE] ", "yellow") + domaine)
+					print(colored("[TRADE] ", "yellow") + domaine + colored(" " + item[0]["prices"][0]["price"]["text"], "cyan"))
 		else:
 			print(colored("[NO] ", "red") + domaine)
 	else:
