@@ -1,4 +1,4 @@
-# Domaine name generator with Ovh
+# Domaine name generator with OVH
 
 <p align="center">
     <img src="README_SRC/main_img.png" width="500">
@@ -6,9 +6,7 @@
 
 - ## Description :
   
-  This program is made to find interessting domain from text list.
-  Program use Ovh to determine if domaine is available or not.
-  Program use async function and data scrapping with chromedriver.exe.
+  This program is designed to find interesting domains from a text list. The program uses Ovh to determine whether a domain is available or not. It utilizes async functions and data scraping with chromedriver.exe.
 
 - ## Requirements :
   
@@ -17,11 +15,11 @@
 
 - ## Install :
   
-  - Run "install_pip_requirement.bat" (you are on windows)
+  - Install `requirements.txt` : `pip install -r requirements.txt`
 
-- ## Step :
-  
-  - Enter word list in "word.txt"
-  - Enter domain extension in "suf.txt"
-  - Enter prefix for word list in "pref.txt
-  - Run "DomainnameGeneratorAndTester.py"
+- ## How to use :
+
+  - Fill prefix of words list in `_prefix.txt`
+  - Fill word list in `_words.txt`
+  - Fill top-level domain in `_top_level_domains.txt`
+  - Run `python domain_name_generator_and_tester.py _prefix.txt _words.txt _top_level_domains.txt`
