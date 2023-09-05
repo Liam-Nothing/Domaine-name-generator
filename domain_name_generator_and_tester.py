@@ -83,10 +83,12 @@ for idx,item in enumerate(json):
     if isinstance(item, list):
         if not len(item) == 0:
             if 'action' in item[0]:
-                if (item[0]["action"] == "create") and (item[0]["pricingMode"] == "default"):
+                if (item[0]["action"] == "create") and (item[0]["pricingMode"] == "create-default"):
                     print(colored("[AVAILABLE] ", "green") + domaine + colored(" " + item[0]["prices"][1]["price"]["text"], "magenta"))
-                    file_output.writelines(domaine + "\n")
-                else:
+                    file_output.writelines(domaine + item[0]["prices"][1]["price"]["text"] + "\n")
+                elif item[0]["pricingMode"] == "transfer-default" :
+                    print(colored("[TRANSFER] ", "red") + domaine + colored(" " + item[0]["prices"][0]["price"]["text"], "cyan"))
+                else :
                     print(colored("[TRADE] ", "yellow") + domaine + colored(" " + item[0]["prices"][0]["price"]["text"], "cyan"))
         else:
             print(colored("[NO] ", "red") + domaine)
