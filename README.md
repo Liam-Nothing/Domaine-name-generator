@@ -1,3 +1,10 @@
+```
+==================================================
+OVH add a challenge to block the scraping.
+The program is no longer functional.
+==================================================
+```
+
 # Domaine name generator with OVH
 
 <p align="center">
